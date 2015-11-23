@@ -26,12 +26,16 @@
         <li class="collection-item" ><%= link_to "Completed:", admin_status_index_path(status: 3) %> <%= Order.where(status: 3).count(:status) %></li>
       </ul>
     </div>
+    <div class="col s6">
+      <label>Filter By Department</label>
+      <%#= select :orders, :filter_status, @orders, {include_blank: true} %>
+    </div>
   </div>
 
   <div class="order-info">
     <% @orders.each do |order| %>
-      <ul class="collapsible popout" data-collapsible="accordion">
-        <li>
+      <ul class="collapsible popout order" data-collapsible="accordion">
+        <li data-status="<%= order.status %>">
           <div class="collapsible-header<%= order.id %>">
             <%= link_to "Order number: #{order.id}", admin_order_path(order) %>
           </div>

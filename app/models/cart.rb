@@ -1,6 +1,7 @@
  require_relative 'cart_coffee'
 class Cart
   attr_reader :contents
+
   def initialize(raw_data)
     @contents = raw_data || {}
   end
@@ -11,10 +12,9 @@ class Cart
   end
 
   def minus_item(item_id)
-    if contents[item_id.to_s] > 0
+    if contents[item_id.to_s] >= 1
       contents[item_id.to_s] -= 1
-    else contents[item_id.to_s] == 0
-      contents.delete_if {|key,value| value == contents[item_id.to_s]}
+      contents.keep_if { |key,value| value >= 1 }
     end
   end
 

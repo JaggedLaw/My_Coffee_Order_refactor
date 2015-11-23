@@ -10,9 +10,7 @@
         <%= image_tag(item.image, class: "circle") %>
         <strong><span class="title"><%= item.title.capitalize %></span></strong>
         <p><%= number_to_currency(item.price) %></p>
-        <%= button_to cart_items_path(id: item.id) do %>
-          <i class="secondary-content #40c4ff light-blue accent-2 waves-effect waves-light btn"> Add to Cart</i>
-        <% end %>
+        <span class="secondary-content"><%= button_to "Add to Cart", cart_items_path(id: item.id), class: "waves-effect waves-light btn black" %></span>
       </li>
       <% end %>
     </ul>

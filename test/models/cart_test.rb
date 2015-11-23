@@ -20,7 +20,7 @@ class CartTest < ActiveSupport::TestCase
     cart.add_item(2)
     cart.minus_item(2)
 
-    assert_equal({"1" =>2, "2"=> 0}, cart.contents)
+    assert_equal({ "1" =>2 }, cart.contents)
   end
 
   test 'cart can give me the total sum of the items in cart' do
