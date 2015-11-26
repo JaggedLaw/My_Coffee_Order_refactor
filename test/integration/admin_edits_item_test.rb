@@ -29,7 +29,24 @@ class AdminEditsItemTest < ActionDispatch::IntegrationTest
       assert page.has_content?('Updated Description')
 
       assert page.has_content?('$3.00')
+  end
 
+  test 'admin can remove an item' do
 
+    create_category_and_items(1)
+    logged_in_admin
+
+    visit admin_items_path
+
+    item1 = Item.find_by(title: 'pour over0')
+    within "#item#{item1.id}" do
+      find_button('Edit Item').click
+    end
+
+    assert edit_admin_item_path(item1.id), current_path
+
+    click_button('Delete Item')
+
+    refute page.has_content?('pour over0')
   end
 end
