@@ -10,5 +10,5 @@
 <%= f.label :image %>
 <%= f.text_field :image %>
 <%= f.submit "Update Item", class: "btn amber darken-3" %>
-<%= f.submit "Delete Item", method: :delete, class: "btn amber darken-3" %></td>
+<%= button_to 'Delete Item', admin_item_path(@item), :method => :delete, class: "btn amber darken-3" %>
 <% end %>

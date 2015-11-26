@@ -30,7 +30,9 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def destroy
-    binding.pry
+    item = params[:id]
+    Item.find(item).destroy
+    redirect_to admin_items_path
   end
 
   private
