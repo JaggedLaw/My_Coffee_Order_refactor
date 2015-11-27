@@ -24,9 +24,13 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(title: params[:item][:title], description: params[:item][:description], price: params[:item][:price], image: params[:item][:image])
-    redirect_to admin_items_path
-    #NEEDTO Add validations and an else if an update doesn't save
+    if @item.update(item_params)
+      flash[:update] = "Item has been updated"
+      redirect_to admin_items_path
+    else
+      flash[:errors] = "Item did not update"
+      redirect_to admin_items_path
+    end
   end
 
   def destroy

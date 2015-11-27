@@ -23,12 +23,13 @@ class AdminEditsItemTest < ActionDispatch::IntegrationTest
     click_button('Update Item')
     item_to_check = Item.find_by(title: 'Updated Title')
 
-      refute page.has_content?('pour over0')
+    refute page.has_content?('pour over0')
+    refute page.has_content?('it taste really good')
+    within "#item#{item_to_check.id}" do
       assert page.has_content?('Updated Title')
-      refute page.has_content?('it taste really good')
       assert page.has_content?('Updated Description')
-
       assert page.has_content?('$3.00')
+    end
   end
 
   test 'admin can remove an item' do

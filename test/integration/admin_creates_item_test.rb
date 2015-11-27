@@ -14,7 +14,7 @@ class AdminCreatesItemTest < ActionDispatch::IntegrationTest
     fill_in('Description', with: 'Rad Description of new item')
     fill_in('Price', with: '3')
     fill_in('Image URL', with: 'www.google.com')
-    fill_in('Category ID', with: 'coffee')
+    fill_in('Category: (coffee, latte, or tea)', with: 'coffee')
     find_button('Create Item').click
 
     assert admin_items_path, current_path
@@ -37,7 +37,7 @@ class AdminCreatesItemTest < ActionDispatch::IntegrationTest
     fill_in('Description', with: '')
     fill_in('Price', with: '')
     fill_in('Image URL', with: 'www.google.com')
-    fill_in('Category ID', with: '')
+    fill_in('Category: (coffee, latte, or tea)', with: '')
     find_button('Create Item').click
 
     assert page.has_content?("Missing fields")

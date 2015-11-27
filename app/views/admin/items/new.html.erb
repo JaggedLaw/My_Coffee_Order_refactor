@@ -1,3 +1,9 @@
+<div class="col s3" id="butooon">
+  <%= button_to admin_dashboard_index_path, method: :get, class: "waves-effect waves-light btn black btn right" do %>
+    <i class="">Back To Admin Dashboard</i>
+  <% end %>
+</div>
+
 <h1>Create an Item</h1>
 
 <%= form_for @items, url: admin_items_path do |f| %>
@@ -9,7 +15,7 @@
 <%= f.text_field :price %>
 <%= f.label :image, 'Image URL'%>
 <%= f.text_field :image %>
-<%= f.label :category_id, 'Category ID' %>
+<%= f.label :category_id, 'Category: (coffee, latte, or tea)' %>
 <%= f.text_field :category_id %>
-<%= f.submit %>
+<%= f.submit "Create Item", class: "btn amber darken-3" %>
 <% end %>

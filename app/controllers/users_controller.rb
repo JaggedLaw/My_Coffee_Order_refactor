@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       flash[:login_update] = "You have succesfully changed your account information"
       redirect_to admin_dashboard_index_path
     else
+      flash[:errors] = "Your account information did not update"
     end
   end
 

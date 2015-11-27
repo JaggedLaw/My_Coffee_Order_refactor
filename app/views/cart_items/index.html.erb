@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <%@items_in_cart.each do |item| %>
+    <%@cart.drinks.each do |item| %>
     <tr>
       <div id="item<%= "#{item.id}"%>">
         <td><%= item.title %></td>
