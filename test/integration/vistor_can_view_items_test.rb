@@ -15,4 +15,14 @@ class VistorCanViewItemsTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?('Latte')
   end
+
+  test 'an unregistered user can view a single item' do
+    create_category_and_items(2)
+    visit items_path
+    
+    click_link('Drip1')
+    assert '/items/#{item.id}', current_path
+
+    assert page.has_content?('it taste good')
+  end
 end

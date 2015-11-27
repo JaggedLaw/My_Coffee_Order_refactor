@@ -8,7 +8,7 @@
       <%@items.each do |item| %>
       <li class="collection-item avatar" id="item<%= item.id %>">
         <%= image_tag(item.image, class: "circle") %>
-        <strong><span class="title"><%= item.title.capitalize %></span></strong>
+        <strong><span class="title"><%= link_to item.title.capitalize, item_path(item.id) %></span></strong>
         <p><%= number_to_currency(item.price) %></p>
         <span class="secondary-content"><%= button_to "Add to Cart", cart_items_path(id: item.id), class: "btn black" %></span>
       </li>
